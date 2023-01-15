@@ -1,0 +1,54 @@
+﻿@page
+@model Stiri.Pages.Jurnalisti.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Jurnalist</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Jurnalist.Nume" class="control-label"></label>
+                <input asp-for="Jurnalist.Nume" class="form-control" />
+                <span asp-validation-for="Jurnalist.Nume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jurnalist.Prenume" class="control-label"></label>
+                <input asp-for="Jurnalist.Prenume" class="form-control" />
+                <span asp-validation-for="Jurnalist.Prenume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jurnalist.Adresa" class="control-label"></label>
+                <input asp-for="Jurnalist.Adresa" class="form-control" />
+                <span asp-validation-for="Jurnalist.Adresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jurnalist.Email" class="control-label"></label>
+                <input asp-for="Jurnalist.Email" class="form-control" />
+                <span asp-validation-for="Jurnalist.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jurnalist.Telefon" class="control-label"></label>
+                <input asp-for="Jurnalist.Telefon" class="form-control" />
+                <span asp-validation-for="Jurnalist.Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
