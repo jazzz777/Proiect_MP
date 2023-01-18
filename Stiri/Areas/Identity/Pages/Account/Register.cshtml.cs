@@ -87,13 +87,17 @@ namespace Stiri.Areas.Identity.Pages.Account
             [Required]
 
             public string Nume { get; set; } //adi
+            [Required]
             public string Prenume { get; set; } //adi
 
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+            [Required]
             public string Adresa { get; set; } //adi
+            [Required]
             public string Telefon { get; set; } //adi
 
             /// <summary>

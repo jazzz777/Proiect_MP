@@ -1,10 +1,13 @@
-﻿namespace Stiri.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Stiri.Models
 {
     public class Articol
     {
         public int ID { get; set; }
         public string Titlu { get; set; }
         public DateTime Data { get; set; }
+        [Display(Name = "Continut articol")]
         public string Text_Articol { get; set; }
         public bool Aprobat { get; set; }
 

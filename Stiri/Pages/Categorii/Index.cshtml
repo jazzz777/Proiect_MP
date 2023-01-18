@@ -61,7 +61,7 @@
                 <tr class="@selectedRow">
                     <td>
                         @{
-                            @catart.Articol.Titlu @: @catart.Articol.Data 
+                            <a asp-page="/Articole/Details" asp-route-id="@catart.Articol.ID">@catart.Articol.Titlu</a> @: @catart.Articol.Data
                             @: categoria @catart.Categorie.Nume_Categorie
                             <br />
                         }

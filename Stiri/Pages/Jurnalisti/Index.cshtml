@@ -83,7 +83,7 @@
             <tr class="@selectedRow">
                 <td>
                     @{
-                            @artjurn.Articol.Titlu @: @artjurn.Articol.Data
+                            <a asp-page="/Articole/Details" asp-route-id="@artjurn.Articol.ID">@artjurn.Articol.Titlu</a> @: @artjurn.Articol.Data
                             @: scris de @artjurn.Jurnalist.Nume_Intreg
                             <br />
                      }
