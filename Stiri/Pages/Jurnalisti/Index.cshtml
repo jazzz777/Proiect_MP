@@ -34,12 +34,10 @@
     @foreach (var item in Model.ArtJurnData.Jurnalisti)
         {
             string selectedRow = "";
-           // foreach (var artjurn in item.Articole_Jurnalist)
-           // {
-           // if (artjurn.JurnalistID == Model.JurnalistID)
-           // {
-           //     selectedRow = "table-success";
-           // }
+            if (item.ID == Model.JurnalistID)
+            {
+                selectedRow = "table-success";
+            }
         <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Nume)

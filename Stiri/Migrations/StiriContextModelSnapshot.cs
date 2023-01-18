@@ -17,7 +17,7 @@ namespace Stiri.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.12")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -33,13 +33,13 @@ namespace Stiri.Migrations
                     b.Property<bool>("Aprobat")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("CategorieID")
+                    b.Property<int>("CategorieID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("JurnalistID")
+                    b.Property<int>("JurnalistID")
                         .HasColumnType("int");
 
                     b.Property<string>("Text_Articol")
@@ -150,6 +150,9 @@ namespace Stiri.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Cititor");
@@ -192,11 +195,15 @@ namespace Stiri.Migrations
                 {
                     b.HasOne("Stiri.Models.Categorie", "Categorie")
                         .WithMany()
-                        .HasForeignKey("CategorieID");
+                        .HasForeignKey("CategorieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Stiri.Models.Jurnalist", "Jurnalist")
                         .WithMany()
-                        .HasForeignKey("JurnalistID");
+                        .HasForeignKey("JurnalistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Categorie");
 
@@ -205,36 +212,40 @@ namespace Stiri.Migrations
 
             modelBuilder.Entity("Stiri.Models.Articole_Jurnalist", b =>
                 {
-                    b.HasOne("Stiri.Models.Articol", "Articole")
+                    b.HasOne("Stiri.Models.Articol", "Articol")
                         .WithMany("Articole_Jurnalist")
                         .HasForeignKey("ArticolID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Stiri.Models.Jurnalist", null)
+                    b.HasOne("Stiri.Models.Jurnalist", "Jurnalist")
                         .WithMany("Articole_Jurnalist")
                         .HasForeignKey("JurnalistID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Articole");
+                    b.Navigation("Articol");
+
+                    b.Navigation("Jurnalist");
                 });
 
             modelBuilder.Entity("Stiri.Models.Categorii_Articole", b =>
                 {
-                    b.HasOne("Stiri.Models.Articol", "Articole")
+                    b.HasOne("Stiri.Models.Articol", "Articol")
                         .WithMany("Categorii_Articole")
                         .HasForeignKey("ArticolID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Stiri.Models.Categorie", null)
+                    b.HasOne("Stiri.Models.Categorie", "Categorie")
                         .WithMany("Categorii_Articole")
                         .HasForeignKey("CategorieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Articole");
+                    b.Navigation("Articol");
+
+                    b.Navigation("Categorie");
                 });
 
             modelBuilder.Entity("Stiri.Models.Articol", b =>

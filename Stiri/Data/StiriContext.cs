@@ -22,4 +22,5 @@ namespace Stiri.Data
 
         public DbSet<Stiri.Models.Articol> Articol { get; set; }
     }
+
 }

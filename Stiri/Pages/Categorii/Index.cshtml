@@ -22,7 +22,14 @@
     <tbody>
         @foreach (var item in Model.CatArtData.Categorii)
         {
-        <tr>
+            string selectedRow = "";
+            // foreach (var artjurn in item.Articole_Jurnalist)
+            // {
+            if (item.ID == Model.CategorieID)
+            {
+                selectedRow = "table-success";
+            }
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Nume_Categorie)
             </td>

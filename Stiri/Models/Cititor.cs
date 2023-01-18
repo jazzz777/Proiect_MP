@@ -12,6 +12,8 @@ namespace Stiri.Models
         public string Email { get; set; }
         public string Telefon { get; set; }
 
+        public string? UserID { get; set; }
+
         [Display(Name = "Nume:")]
         public string? Nume_Intreg
         {
